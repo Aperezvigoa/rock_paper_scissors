@@ -4,7 +4,7 @@ A simple and fun Rock–Paper–Scissors browser game built with **HTML**, **CSS
 
 ## Demo
 
-`[https://your-username.github.io/rock-paper-scissors/](https://aperezvigoa.github.io/rock_paper_scissors/)`
+`https://aperezvigoa.github.io/rock_paper_scissors/`
 
 ## Technologies
 
