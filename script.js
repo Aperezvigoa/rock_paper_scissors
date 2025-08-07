@@ -18,27 +18,42 @@ function getUserChoice() {
     return choice;
 }
 
+// --- Adding the DIV
+const resultDiv = document.querySelector("#results");
+
+function appendResult(result) {
+    resultDiv.appendChild(result);
+}
+
 function playRound(humanChoice, computerChoice) {
+    let pText = document.createElement("p");
     if (humanChoice.toUpperCase() == computerChoice.toUpperCase()) {
-        console.log("Same result!");
+        pText.textContent = "Same result!";
+        appendResult(pText);
     } else if (humanChoice.toUpperCase() == "ROCK" && computerChoice.toUpperCase() == "PAPER") {
-        console.log("Computer wins, paper wins rock");
         computerScore += 1;
+        pText.textContent = "Computer wins, paper wins rock";
+        appendResult(pText);
     } else if (humanChoice.toUpperCase() == "ROCK" && computerChoice.toUpperCase() == "SCISSORS") {
-        console.log("Human wins, rock wins scissors");
         humanScore += 1;
+        pText.textContent = "Human wins, rock wins scissors";
+        appendResult(pText);
     } else if (humanChoice.toUpperCase() == "PAPER" && computerChoice.toUpperCase() == "ROCK") {
-        console.log("Human wins, paper wins rock");
         humanScore += 1;
+        pText.textContent = "Human wins, paper wins rock";
+        appendResult(pText);
     } else if (humanChoice.toUpperCase() == "PAPER" && computerChoice.toUpperCase() == "SCISSORS") {
-        console.log("Computer wins, scissors wins paper");
         computerScore += 1;
+        pText.textContent = "Computer wins, scissors wins paper";
+        appendResult(pText);
     } else if (humanChoice.toUpperCase() == "SCISSORS" && computerChoice.toUpperCase() == "ROCK") {
-        console.log("Computer wins, rock wins scissors");
         computerScore += 1;
+        pText.textContent = "Computer wins, rock wins scissors";
+        appendResult(pText);
     } else if (humanChoice.toUpperCase() == "SCISSORS" && computerChoice.toUpperCase() == "PAPER") {
-        console.log("Human wins, scissors wins paper");
         humanScore += 1;
+        pText.textContent = "Computer wins, rock wins scissors";
+        appendResult(pText);
     }
 }
 
@@ -56,4 +71,20 @@ function playGame() {
     }
 }
 
-playGame();
+//playGame();
+// --- Added buttons and functionality
+const rockbtn = document.querySelector("#rock");
+const paperbtn = document.querySelector("#paper");
+const scsbtn = document.querySelector("#scissors");
+
+rockbtn.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
+});
+
+paperbtn.addEventListener("click", () => {
+    playRound("paper", getComputerChoice());
+});
+
+scsbtn.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice());
+});
