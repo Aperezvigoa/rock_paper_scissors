@@ -52,22 +52,23 @@ function playRound(humanChoice, computerChoice) {
         appendResult(pText);
     } else if (humanChoice.toUpperCase() == "SCISSORS" && computerChoice.toUpperCase() == "PAPER") {
         humanScore += 1;
-        pText.textContent = "Computer wins, rock wins scissors";
+        pText.textContent = "Human wins, scissors wins paper";
         appendResult(pText);
     }
+    playGame();
 }
 
 function playGame() {
-    for (i = 0; i < 5; i++) {
-        let computerChoice = getComputerChoice();
-        let humanChoice = getUserChoice();
-        playRound(humanChoice, computerChoice)
-    }
-
-    if (humanScore > computerScore) {
-        console.log("Human wins with " + humanScore + " points.")
-    } else {
-        console.log("Computer wins with " + computerScore + " points.")
+    if (humanScore == 5 && humanScore > computerScore) {
+        alert("Human wins with " + humanScore + " points.");
+        humanScore = 0;
+        computerScore = 0;
+        resultDiv.replaceChildren();
+    } else if (computerScore == 5 && computerScore > humanScore) {
+        alert("Computer wins with " + computerScore + " points.");
+        humanScore = 0;
+        computerScore = 0;
+        resultDiv.replaceChildren();
     }
 }
 
@@ -88,3 +89,4 @@ paperbtn.addEventListener("click", () => {
 scsbtn.addEventListener("click", () => {
     playRound("scissors", getComputerChoice());
 });
+
